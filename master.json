@@ -46,6 +46,12 @@
       "metadata": {
         "description": "resourceId of the master loadbalancer backendpool this machine will be joined to"
       }
+    },
+    "imageUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Uri of the source image (custom image) to create the OSDisk"
+      }
     }
   },
   "variables": {
