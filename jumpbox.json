@@ -49,6 +49,12 @@
     },
     "routerExtIP": {
       "type": "string"
+    },
+    "imageUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Uri of the source image (custom image) to create the OSDisk"
+      }
     }
   },
   "variables": {
@@ -138,7 +144,10 @@
               "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, 'openshiftvmachines/', parameters('vmName'), '.vhd')]"
             },
             "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "image": {
+                "uri": "[parameters('imageUri')]"
+            }
           },
           "dataDisks": [
             {
