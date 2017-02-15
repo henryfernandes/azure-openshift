@@ -39,6 +39,12 @@
         "description": "OS to use. Centos or Redhat Enterprise Linux"
       }
     },
+    "imageUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Uri of the source image (custom image) to create the OSDisk"
+      }
+    },
     "numberOfMasterNodes": {
       "type": "int",
       "defaultValue": 3,
