@@ -442,7 +442,7 @@
     }
   },
   "variables": {
-    "baseTemplateUrl": "https://raw.githubusercontent.com/derdanu/azure-openshift/master/",
+    "baseTemplateUrl": "https://raw.githubusercontent.com/paragneve/azure-openshift/master/",
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
     "baseVMachineTemplateUriNode": "[concat(variables('baseTemplateUrl'), 'node.json')]",
     "baseVMachineTemplateUriMaster": "[concat(variables('baseTemplateUrl'), 'master.json')]",
@@ -698,6 +698,9 @@
           },
           "imageReference": {
             "value": "[variables(parameters('image'))]"
+          },
+          "imageUri": {
+            "value": "[parameters('imageUri')]"
           }
         }
       }
@@ -758,6 +761,9 @@
           },
           "numberOfInfraNodes": {
             "value": "[parameters('numberOfinfrasndes')]"
+          },
+          "imageUri": {
+            "value": "[parameters('imageUri')]"
           }
         }
       }
@@ -814,6 +820,9 @@
           },
           "backEndAddressPool": {
             "value": "[concat(variables('masterlbid'), '/backendAddressPools/BackendPool')]"
+          },
+          "imageUri": {
+            "value": "[parameters('imageUri')]"
           }
         }
       }
@@ -867,6 +876,9 @@
           },
           "backEndAddressPool": {
             "value": "[concat(variables('infralbid'), '/backendAddressPools/BackendPool')]"
+          },
+          "imageUri": {
+            "value": "[parameters('imageUri')]"
           }
         }
       }
