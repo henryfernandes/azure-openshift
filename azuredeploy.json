@@ -28,21 +28,16 @@
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
       }
     },
-    "image": {
+    "customImageName": {
       "type": "string",
-      "allowedValues": [
-        "centos",
-        "rhel"
-      ],
-      "defaultValue": "centos",
       "metadata": {
-        "description": "OS to use. Centos or Redhat Enterprise Linux"
+        "description": "Name of the source image (custom image) to create the OSDisk"
       }
     },
-    "imageUri": {
+    "customImageResourceGroup": {
       "type": "string",
       "metadata": {
-        "description": "Uri of the source image (custom image) to create the OSDisk"
+        "description": "Name of the resource group having the source image (custom image)"
       }
     },
     "numberOfMasterNodes": {
@@ -481,19 +476,7 @@
     "nodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('nodesubnetName'))]",
     "jumpboxSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('jumpnodesubnetName'))]",
     "nodesASName": "nodesAS",
-    "masterSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('mastersubnetName'))]",
-    "centos": {
-      "publisher": "Openlogic",
-      "offer": "CentOS",
-      "sku": "7.2",
-      "version": "latest"
-    },
-    "rhel": {
-      "publisher": "RedHat",
-      "offer": "RHEL",
-      "sku": "7.2",
-      "version": "latest"
-    }
+    "masterSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('mastersubnetName'))]"
   },
   "resources": [
     {
@@ -696,11 +679,11 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          "imageReference": {
-            "value": "[variables(parameters('image'))]"
+          "customImageName": {
+            "value": "[parameters('customImageName')]"
           },
-          "imageUri": {
-            "value": "[parameters('imageUri')]"
+          "customImageResourceGroup": {
+            "value": "[parameters('customImageResourceGroup')]"
           }
         }
       }
@@ -744,9 +727,6 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          "imageReference": {
-            "value": "[variables(parameters('image'))]"
-          },
           "fqdn": {
             "value": "[reference(variables('masterpipname')).dnsSettings.fqdn]"
           },
@@ -762,8 +742,11 @@
           "numberOfInfraNodes": {
             "value": "[parameters('numberOfinfrasndes')]"
           },
-          "imageUri": {
-            "value": "[parameters('imageUri')]"
+          "customImageName": {
+            "value": "[parameters('customImageName')]"
+          },
+          "customImageResourceGroup": {
+            "value": "[parameters('customImageResourceGroup')]"
           }
         }
       }
@@ -812,17 +795,17 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          "imageReference": {
-            "value": "[variables(parameters('image'))]"
-          },
           "ASName": {
             "value": "[variables('masterASName')]"
           },
           "backEndAddressPool": {
             "value": "[concat(variables('masterlbid'), '/backendAddressPools/BackendPool')]"
           },
-          "imageUri": {
-            "value": "[parameters('imageUri')]"
+          "customImageName": {
+            "value": "[parameters('customImageName')]"
+          },
+          "customImageResourceGroup": {
+            "value": "[parameters('customImageResourceGroup')]"
           }
         }
       }
@@ -868,17 +851,17 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          "imageReference": {
-            "value": "[variables(parameters('image'))]"
-          },
           "ASName": {
             "value": "[variables('infraASName')]"
           },
           "backEndAddressPool": {
             "value": "[concat(variables('infralbid'), '/backendAddressPools/BackendPool')]"
           },
-          "imageUri": {
-            "value": "[parameters('imageUri')]"
+          "customImageName": {
+            "value": "[parameters('customImageName')]"
+          },
+          "customImageResourceGroup": {
+            "value": "[parameters('customImageResourceGroup')]"
           }
         }
       }
