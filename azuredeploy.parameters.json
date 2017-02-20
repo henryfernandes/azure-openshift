@@ -17,8 +17,11 @@
     "numberOfNodes": {
       "value": 3
     },
-    "image": {
-      "value": "centos"
+    "customImageName": {
+      "value": ""
+    },
+    "customImageResourceGroup": {
+      "value": ""
     }
   }
 }
