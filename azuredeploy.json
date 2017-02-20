@@ -1061,7 +1061,7 @@
       },
       "type": "Microsoft.Compute/availabilitySets",
       "location": "[resourceGroup().location]",
-      "apiVersion": "[variables('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
@@ -1075,7 +1075,7 @@
       },
       "type": "Microsoft.Compute/availabilitySets",
       "location": "[resourceGroup().location]",
-      "apiVersion": "[variables('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
@@ -1089,7 +1089,7 @@
       },
       "type": "Microsoft.Compute/availabilitySets",
       "location": "[resourceGroup().location]",
-      "apiVersion": "[variables('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
