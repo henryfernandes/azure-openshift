@@ -49,7 +49,7 @@
     "apiVersion": "2015-06-15",
     "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
     "storageAccountName": "[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
-    "imageReference": "[resourceId(parameters('customImageResourceGroup'), 'Microsoft.Compute/images', parameters('customImageName')]"
+    "imageReference": "[resourceId(parameters('customImageResourceGroup'), 'Microsoft.Compute/images', parameters('customImageName'))]"
   },
   "resources": [
     {
