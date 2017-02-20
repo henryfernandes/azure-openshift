@@ -26,12 +26,6 @@
     "baseTemplateUrl": {
       "type": "string"
     },
-    "imageReference": {
-      "type": "object",
-      "metadata": {
-        "description": "imageReference object that should be used to create the virtual machine"
-      }
-    },
     "fqdn": {
       "type": "string",
       "metadata": {
@@ -50,17 +44,24 @@
     "routerExtIP": {
       "type": "string"
     },
-    "imageUri": {
+    "customImageName": {
       "type": "string",
       "metadata": {
-        "description": "Uri of the source image (custom image) to create the OSDisk"
+        "description": "Name of the source image (custom image) to create the OSDisk"
+      }
+    },
+    "customImageResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the resource group having the source image (custom image)"
       }
     }
   },
   "variables": {
     "apiVersion": "2015-06-15",
     "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
-    "storageAccountName": "[concat(parameters('vmName'), uniqueString(resourceGroup().id))]"
+    "storageAccountName": "[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
+     "imageReference": "[resourceId(parameters('customImageResourceGroup'), 'Microsoft.Compute/images', parameters('customImageName')]"
   },
   "resources": [
     {
@@ -137,18 +138,7 @@
           }
         },
         "storageProfile": {
-          "imageReference": "[parameters('imageReference')]",
-          "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, 'openshiftvmachines/', parameters('vmName'), '.vhd')]"
-            },
-            "caching": "ReadWrite",
-            "createOption": "FromImage",
-            "image": {
-                "uri": "[parameters('imageUri')]"
-            }
-          },
+          "imageReference": "[variables('imageReference')]",
           "dataDisks": [
             {
               "caching": "None",
