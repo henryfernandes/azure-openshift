@@ -1065,7 +1065,8 @@
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
-        "platformFaultDomainCount": 3
+        "platformFaultDomainCount": 3,
+        "managed": true
       }
     },
     {
@@ -1079,7 +1080,8 @@
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
-        "platformFaultDomainCount": 3
+        "platformFaultDomainCount": 3,
+        "managed": true
       }
     },
     {
@@ -1093,7 +1095,8 @@
       "dependsOn": [],
       "properties": {
         "platformUpdateDomainCount": 5,
-        "platformFaultDomainCount": 3
+        "platformFaultDomainCount": 3,
+        "managed": true
       }
     }
   ],
