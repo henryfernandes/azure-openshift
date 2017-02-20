@@ -120,7 +120,9 @@
           }
         },
         "storageProfile": {
-          "imageReference": "[variables('imageReference')]",
+          "imageReference": {
+            "id": "[variables('imageReference')]"
+          },
           "dataDisks": [
             {
               "caching": "None",
